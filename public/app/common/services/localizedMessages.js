@@ -1,4 +1,6 @@
-angular.module('services.localizedMessages', []).factory('localizedMessages', ['$interpolate', 'I18N.MESSAGES', function ($interpolate, i18nmessages) {
+var localizedMessages = angular.module('services.localizedMessages', [])
+
+localizedMessages.factory('localizedMessages', ['$interpolate', 'I18N.MESSAGES', function ($interpolate, i18nmessages) {
 
   var handleNotFound = function (msg, msgKey) {
     return msg || '?' + msgKey + '?';
@@ -6,7 +8,7 @@ angular.module('services.localizedMessages', []).factory('localizedMessages', ['
 
   return {
     get : function (msgKey, interpolateParams) {
-      var msg =  i18nmessages[msgKey];
+      var msg =  i18nmessages['en-us'][msgKey];
       if (msg) {
         return $interpolate(msg)(interpolateParams);
       } else {
@@ -14,4 +16,10 @@ angular.module('services.localizedMessages', []).factory('localizedMessages', ['
       }
     }
   };
+}]);
+
+app.filter('i18n', ['i18nmessages', function (i18nmessages) {
+    return function (msgKey) {
+        return i18nmessages['en-us'][msgKey];;
+    };
 }]);

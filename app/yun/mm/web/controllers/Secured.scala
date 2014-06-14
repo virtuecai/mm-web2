@@ -10,11 +10,13 @@ import Json._
  */
 trait Secured {
 
+  val USER_ID = "userid"
+
   /**
    * Action for authenticated users.
    */
   def isAuthenticated[A](bodyParser: BodyParser[A])(f: => Long => Request[A] => Result): EssentialAction = Security.Authenticated(
-    req => req.session.get("UserId"),
+    req => req.session.get(USER_ID),
     _ => Results.Unauthorized) (
     userId => Action(bodyParser)(request => f(userId.toLong)(request))
   )

@@ -32,7 +32,6 @@ angular.module('security.service', [
     }
 
     function onLoginDialogClose(success) {
-        console.log('onLoginDialogClose.....')
         loginDialog.dismiss('cancel');
         if (success) {
             queue.retryAll();
@@ -63,10 +62,11 @@ angular.module('security.service', [
         },
 
         // Attempt to authenticate a user by the given email and password
-        login: function (email, password) {
-            var request = $http.post('/login', {email: email, password: password});
+        login: function (username, password) {
+            var request = $http.post('/login', {username: username, password: password});
             return request.then(function (response) {
-                service.currentUser = response.data.user;
+                console.log(response)
+                service.currentUser = response.data;
                 if (service.isAuthenticated()) {
                     closeLoginDialog(true);
                 }
@@ -93,8 +93,8 @@ angular.module('security.service', [
             if (service.isAuthenticated()) {
                 return $q.when(service.currentUser);
             } else {
-                return $http.get('/current-user').then(function (response) {
-                    service.currentUser = response.data.user;
+                return $http.get('/currentuser').then(function (response) {
+                    service.currentUser = response.data;
                     return service.currentUser;
                 });
             }

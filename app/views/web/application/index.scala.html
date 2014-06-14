@@ -5,7 +5,7 @@
         <title> 下一个 </title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="winsland web 2.0 site.">
+        <meta name="description" content="winsland web 2.1 site.">
         <meta name="author" content="winsland">
         <meta property="qc:admins" content="235337642661456011756375" />
         <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
@@ -24,7 +24,7 @@
         <script src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-file-upload.js"))'></script>
         <script src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))'></script>
         <script src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.js"))'></script>
-        @{new com.ee.assets.Loader(None, play.api.Play.current.mode, play.api.Play.current.configuration).scripts("app")("javascripts", "app")}
+        @{new com.ee.assets.Loader(None, play.api.Play.current.mode, play.api.Play.current.configuration).scripts("app-jss-merge")("app")}
         <script type="text/javascript">
         window[ 'ResourceBase' ] = '@play.api.Play.configuration(play.api.Play.current).getString("yun.mm.file.resource.base").getOrElse("/assets/")';
         </script>
