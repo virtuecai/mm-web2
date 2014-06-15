@@ -9,8 +9,6 @@ loginForm.controller('LoginFormController', ['$scope', 'security', 'localizedMes
     // Any error message from failing to login
     $scope.authError = null;
 
-    $scope.formMsg = localizedMessages.get('login.modal.form');
-
     // The reason that we are being asked to login - for instance because we tried to access something to which we are not authorized
     // We could do something diffent for each reason here but to keep it simple...
     $scope.authReason = null;
@@ -27,7 +25,7 @@ loginForm.controller('LoginFormController', ['$scope', 'security', 'localizedMes
 
 
         // Try to login
-        security.login($scope.user.username, $scope.user.password).then(function (loggedIn) {
+        security.login($scope.user).then(function (loggedIn) {
 
             if (!loggedIn) {
                 // If we get here then the login failed due to bad credentials

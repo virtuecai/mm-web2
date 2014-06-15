@@ -8,9 +8,9 @@ var app = angular.module('app', [
     'services.i18nNotifications',
     'services.httpRequestTracker',
     'security',
-    'directives.crud'
+    'directives.crud',
+    'blogs'
 ]);
-
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
@@ -46,9 +46,9 @@ app.controller('HeaderCtrl', ['$scope', '$location', '$route', 'security', 'brea
 
         $scope.home = function () {
             if (security.isAuthenticated()) {
-                $location.path('/dashboard');
+                $location.path('/profile/blogs');
             } else {
-                $location.path('/projectsinfo');
+                $location.path('/');
             }
         };
 

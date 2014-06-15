@@ -1,5 +1,6 @@
-angular.module('services.i18nNotifications', ['services.notifications', 'services.localizedMessages']);
-angular.module('services.i18nNotifications').factory('i18nNotifications', ['localizedMessages', 'notifications', function (localizedMessages, notifications) {
+var notifications = angular.module('services.i18nNotifications', ['services.notifications', 'services.localizedMessages']);
+
+notifications.factory('i18nNotifications', ['localizedMessages', 'notifications', function (localizedMessages, notifications) {
 
   var prepareNotification = function(msgKey, type, interpolateParams, otherProperties) {
      return angular.extend({
