@@ -24,7 +24,7 @@
         <script src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-file-upload.js"))'></script>
         <script src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))'></script>
         <script src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.js"))'></script>
-        @{new com.ee.assets.Loader(None, play.api.Play.current.mode, play.api.Play.current.configuration).scripts("app-jss-merge")("app")}
+        @{new com.ee.assets.Loader(None, play.api.Play.current.mode, play.api.Play.current.configuration).scripts("app-javascript")("app")}
         <script type="text/javascript">
         window[ 'ResourceBase' ] = '@play.api.Play.configuration(play.api.Play.current).getString("yun.mm.file.resource.base").getOrElse("/assets/")';
         </script>

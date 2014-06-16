@@ -50,7 +50,7 @@ object Application extends Controller with Secured {
     implicit request =>
       request.session.get(SESSION_USER_ID).flatMap(userId => models.user.User.findById(userId.toLong)).map(
         x => Ok(Json.toJson(x))
-      ).getOrElse(NotFound)
+      ).getOrElse(Ok)
   }
 
 }

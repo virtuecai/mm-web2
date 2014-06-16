@@ -65,7 +65,6 @@ angular.module('security.service', [
         login: function (user) {
             var request = $http.post('/login', user);
             return request.then(function (response) {
-                console.log(response)
                 service.currentUser = response.data;
                 if (service.isAuthenticated()) {
                     closeLoginDialog(true);

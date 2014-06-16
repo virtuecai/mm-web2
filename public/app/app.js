@@ -4,12 +4,13 @@ var app = angular.module('app', [
     'ngRoute',
     'ngResource',
     'ngSanitize',
+    'home',
+    'blogs',
     'services.breadcrumbs',
     'services.i18nNotifications',
     'services.httpRequestTracker',
     'security',
-    'directives.crud',
-    'blogs'
+    'directives.crud'
 ]);
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -18,8 +19,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 }]);
 
 app.run(['security', function(security) {
-    // Get the current user when the application starts
-    // (in case they are still logged in from a previous session)
+    // 启动程序时从session中候获取当前登录用户
     security.requestCurrentUser();
 }]);
 
@@ -32,7 +32,7 @@ app.controller('AppCtrl', ['$scope', 'i18nNotifications', 'localizedMessages', f
     };
 
     $scope.$on('$routeChangeError', function (event, current, previous, rejection) {
-        i18nNotifications.pushForCurrentRoute('errors.route.changeError', 'error', {}, {rejection: rejection});
+        i18nNotifications.pushForCurrentRoute('errors.route.changeError', 'warning', {}, {rejection: rejection});
     });
 }]);
 
